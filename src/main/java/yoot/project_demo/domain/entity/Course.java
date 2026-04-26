@@ -2,12 +2,17 @@ package yoot.project_demo.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
-import org.springframework.data.domain.Auditable;
+import lombok.EqualsAndHashCode;
 import yoot.project_demo.domain.AuditableEntity;
 
+import java.math.BigDecimal;
+
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
+@Table(name = "courses")
 public class Course extends AuditableEntity {
     @Column(columnDefinition = "varchar(20)")
     private String courseCode;
@@ -18,9 +23,12 @@ public class Course extends AuditableEntity {
     @Column(columnDefinition = "text")
     private String description;
 
-    private double tuition_fee;
+    @Column(name = "tuition_fee")
+    private BigDecimal tuitionFee;
 
-    private int total_sessions;
+    @Column(name = "total_sessions")
+    private int totalSessions;
 
-    private byte is_active;
+    @Column(name = "is_active")
+    private boolean isActive;
 }

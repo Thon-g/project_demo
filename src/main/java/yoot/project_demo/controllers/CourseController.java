@@ -21,15 +21,22 @@ public class CourseController {
         return ResponseEntity.ok(ApiResponse.success(courseService.findAll()));
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<ApiResponse<Course>> getCourseById(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<Course>> getCourseById(@PathVariable Long id) {
         Optional<Course> course = courseService.findById(id);
         return course.map(value -> ResponseEntity.ok(ApiResponse.success(value)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 
+    @PostMapping
     public ResponseEntity<ApiResponse<Course>> create(@RequestBody Course course) {
         return ResponseEntity.ok(ApiResponse.success(courseService.save(course)));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
+        courseService.delete(id);
+        return ResponseEntity.ok(ApiResponse.successMessage("Xóa course thành công"));
     }
 }

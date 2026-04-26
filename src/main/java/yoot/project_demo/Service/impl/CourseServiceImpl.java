@@ -25,4 +25,8 @@ public class CourseServiceImpl implements CourseService {
     public Course save(Course course) {
         return courseRepository.save(course);
     }
+
+    public void delete(Long id) {
+        courseRepository.deleteById(id);
+    }
 }
