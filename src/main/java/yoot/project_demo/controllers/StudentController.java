@@ -33,7 +33,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentResponse> create(StudentUpsertRequest request) {
+    public ResponseEntity<StudentResponse> create(@Valid @RequestBody StudentUpsertRequest request) {
         return ResponseEntity.ok(studentService.create(request));
     }
 
@@ -43,7 +43,7 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<Void> delete(@PathVariable Long id) throws NotFoundException {
         studentService.delete(id);
         return ResponseEntity.ok().build();
     }
