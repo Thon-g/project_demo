@@ -3,6 +3,7 @@ package yoot.project_demo.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.sql.results.graph.Fetch;
 import yoot.project_demo.domain.AuditableEntity;
 import yoot.project_demo.domain.enums.Gender;
 import yoot.project_demo.domain.enums.Status;
@@ -42,12 +43,13 @@ public class Student extends AuditableEntity {
     @Column(nullable = false)
     private Status status = Status.ACTIVE;
 
-    @Column(name = "latest_score")
-    private BigDecimal latestScore;
+    @Column(name = "latest_score", precision = 5, scale = 2)
+    private BigDecimal latestScore = BigDecimal.ZERO;
 
+    @Column(length = 255)
     private String note;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id", foreignKey = @ForeignKey(name = "fk_students_parent"))
     private Parent parent;
 }

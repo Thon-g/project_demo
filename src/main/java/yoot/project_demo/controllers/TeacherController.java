@@ -50,7 +50,7 @@ public class TeacherController {
         return ResponseEntity.ok(ApiResponse.success("Cập nhật teacher thành công", updatedTeacher));
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id){
         teacherService.delete(id);
         return ResponseEntity.ok(ApiResponse.successMessage("Xóa teacher thành công"));

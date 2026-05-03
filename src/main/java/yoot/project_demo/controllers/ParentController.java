@@ -49,7 +49,7 @@ public class ParentController {
         return ResponseEntity.ok(ApiResponse.success("Cập nhật parent thành công", updatedParent));
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
         parentService.delete(id);
         return ResponseEntity.ok(ApiResponse.successMessage("Xóa parent thành công"));
