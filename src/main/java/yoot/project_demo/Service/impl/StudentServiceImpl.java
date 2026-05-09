@@ -3,11 +3,9 @@ package yoot.project_demo.Service.impl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import yoot.project_demo.Service.ParentService;
 import yoot.project_demo.Service.StudentService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Student;
-import yoot.project_demo.dto.parent.ParentResponse;
 import yoot.project_demo.dto.student.StudentResponse;
 import yoot.project_demo.dto.student.StudentUpsertRequest;
 import yoot.project_demo.repository.ParentRepository;
@@ -21,12 +19,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
-    private final ParentService parentService;
+    private final ParentRepository parentRepository;
     private final ModelMapper modelMapper;
 
     public List<StudentResponse> findByAll() {
         return studentRepository.findAll().stream()
-                .map(s->map(s)).toList();
+                .map(this::map).toList();
     }
 
     private StudentResponse map(Student student) {
@@ -40,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
 
     public StudentResponse create(StudentUpsertRequest request) {
         Student student = modelMapper.map(request, Student.class);
-        parentService.findById(request.getParentId())
+        parentRepository.findById(request.getParentId())
                 .ifPresent(student::setParent);
         student.setCreateAt(LocalDateTime.now());
         student.setUpdatedAt(LocalDateTime.now());
@@ -51,7 +49,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentResponse update(Long id, StudentUpsertRequest request) {
         Student student = modelMapper.map(request, Student.class);
         student.setId(id);
-        parentService.findById(request.getParentId())
+        parentRepository.findById(request.getParentId())
                 .ifPresent(student::setParent);
         student.setUpdatedAt(LocalDateTime.now());
         Student result = studentRepository.save(student);
