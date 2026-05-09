@@ -22,13 +22,13 @@ public class StudentServiceImpl implements StudentService {
     private final ParentRepository parentRepository;
     private final ModelMapper modelMapper;
 
+    private StudentResponse map(Student student) {
+        return modelMapper.map(student, StudentResponse.class);
+    }
+
     public List<StudentResponse> findByAll() {
         return studentRepository.findAll().stream()
                 .map(this::map).toList();
-    }
-
-    private StudentResponse map(Student student) {
-        return modelMapper.map(student, StudentResponse.class);
     }
 
     public Optional<StudentResponse> findById(Long id) {

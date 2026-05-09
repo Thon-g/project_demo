@@ -1,15 +1,19 @@
 package yoot.project_demo.Service;
 
 import org.springframework.stereotype.Service;
+import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Teacher;
+import yoot.project_demo.dto.Teacher.TeacherResponse;
+import yoot.project_demo.dto.Teacher.TeacherUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public interface TeacherService {
-    List<Teacher> findAll();
-    Optional<Teacher> findById(Long id);
-    Teacher save(Teacher teacher);
-    void delete(Long id);
+    List<TeacherResponse> findByAll();
+    Optional<TeacherResponse> findById(Long id);
+    TeacherResponse create(TeacherUpsertRequest request);
+    TeacherResponse update(Long id, TeacherUpsertRequest request);
+    void delete(Long id) throws NotFoundException;
 }
