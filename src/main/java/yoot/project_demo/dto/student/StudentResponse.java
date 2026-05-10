@@ -9,6 +9,7 @@ import yoot.project_demo.dto.parent.ParentResponse;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -37,4 +38,8 @@ public class StudentResponse {
     private String note;
 
     private ParentResponse parentResponse;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 }

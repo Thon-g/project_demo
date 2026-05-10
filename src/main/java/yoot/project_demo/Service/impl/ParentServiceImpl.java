@@ -37,8 +37,6 @@ public class ParentServiceImpl implements ParentService {
 
     public ParentResponse create(ParentUpsertRequest request) {
         Parent newParent = mapper.map(request, Parent.class);
-        newParent.setCreateAt(LocalDateTime.now());
-        newParent.setUpdatedAt(LocalDateTime.now());
         Parent result = parentRepository.save(newParent);
         return map(result);
     }
@@ -46,7 +44,6 @@ public class ParentServiceImpl implements ParentService {
     public ParentResponse update(Long id, ParentUpsertRequest request) {
         Parent newParent = mapper.map(request, Parent.class);
         newParent.setId(id);
-        newParent.setUpdatedAt(LocalDateTime.now());
         Parent result = parentRepository.save(newParent);
         return map(result);
     }

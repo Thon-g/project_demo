@@ -23,9 +23,10 @@ public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
     private final ModelMapper mapper;
 
-    public CourseResponse map(Course course) {
+    private CourseResponse map(Course course) {
         return mapper.map(course, CourseResponse.class);
     }
+
     public List<CourseResponse> findByAll() {
         return courseRepository.findAll().stream()
                 .map(this::map).toList();
@@ -38,8 +39,6 @@ public class CourseServiceImpl implements CourseService {
 
     public CourseResponse create(CourseUpsertRequest request) {
         Course newCourse = mapper.map(request, Course.class);
-        newCourse.setCreateAt(LocalDateTime.now());
-        newCourse.setUpdatedAt(LocalDateTime.now());
         Course result = courseRepository.save(newCourse);
         return map(result);
     }
@@ -47,7 +46,6 @@ public class CourseServiceImpl implements CourseService {
     public CourseResponse update(Long id, CourseUpsertRequest request) {
         Course newCourse = mapper.map(request, Course.class);
         newCourse.setId(id);
-        newCourse.setUpdatedAt(LocalDateTime.now());
         Course result = courseRepository.save(newCourse);
         return map(result);
     }

@@ -1,31 +1,26 @@
-package yoot.project_demo.dto.Course;
+package yoot.project_demo.dto.Room;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CourseResponse {
-
+public class RoomResponse {
     private Long id;
 
-    private String courseCode;
+    private String room_code;
 
     private String name;
 
+    private int capacity;
+
     private String description;
-
-    private BigDecimal tuitionFee;
-
-    private int totalSessions;
-
-    private boolean isActive;
 
     private LocalDateTime createdAt;
 

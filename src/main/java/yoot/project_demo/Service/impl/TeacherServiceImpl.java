@@ -20,7 +20,7 @@ public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
     private final ModelMapper mapper;
 
-    public TeacherResponse map(Teacher teacher) {
+    private TeacherResponse map(Teacher teacher) {
         return mapper.map(teacher, TeacherResponse.class);
     }
 
@@ -36,8 +36,6 @@ public class TeacherServiceImpl implements TeacherService {
 
     public TeacherResponse create(TeacherUpsertRequest request) {
         Teacher newTeacher = mapper.map(request, Teacher.class);
-        newTeacher.setCreateAt(LocalDateTime.now());
-        newTeacher.setUpdatedAt(LocalDateTime.now());
         Teacher result = teacherRepository.save(newTeacher);
         return map(result);
     }
@@ -45,7 +43,6 @@ public class TeacherServiceImpl implements TeacherService {
     public TeacherResponse update(Long id, TeacherUpsertRequest request) {
         Teacher newTeacher = mapper.map(request, Teacher.class);
         newTeacher.setId(id);
-        newTeacher.setUpdatedAt(LocalDateTime.now());
         Teacher result = teacherRepository.save(newTeacher);
         return map(result);
     }

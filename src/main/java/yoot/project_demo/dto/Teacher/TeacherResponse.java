@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import yoot.project_demo.domain.enums.TeacherRole;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,4 +26,8 @@ public class TeacherResponse {
     private String cccdImageUrl;
 
     private boolean isActive;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 }
