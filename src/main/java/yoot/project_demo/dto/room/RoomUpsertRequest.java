@@ -1,4 +1,4 @@
-package yoot.project_demo.dto.Room;
+package yoot.project_demo.dto.room;
 
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;

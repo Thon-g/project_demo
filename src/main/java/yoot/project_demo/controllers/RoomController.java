@@ -1,12 +1,13 @@
 package yoot.project_demo.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 import yoot.project_demo.Service.RoomService;
 import yoot.project_demo.common.ApiResponse;
-import yoot.project_demo.dto.Room.RoomResponse;
-import yoot.project_demo.dto.Room.RoomUpsertRequest;
+import yoot.project_demo.dto.room.RoomResponse;
+import yoot.project_demo.dto.room.RoomUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class RoomController {
     private final RoomService roomService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ApiResponse<List<RoomResponse>> findAll() {
         return ApiResponse.success(roomService.findByAll());
     }

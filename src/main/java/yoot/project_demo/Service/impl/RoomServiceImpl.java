@@ -1,15 +1,13 @@
 package yoot.project_demo.Service.impl;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import yoot.project_demo.Service.RoomService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Room;
-import yoot.project_demo.dto.Room.RoomResponse;
-import yoot.project_demo.dto.Room.RoomUpsertRequest;
+import yoot.project_demo.dto.room.RoomResponse;
+import yoot.project_demo.dto.room.RoomUpsertRequest;
 import yoot.project_demo.repository.RoomRepository;
 import java.util.List;
 import java.util.Optional;
