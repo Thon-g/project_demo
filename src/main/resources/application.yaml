@@ -9,7 +9,7 @@ spring:
     show-sql: true
     open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -26,3 +26,10 @@ spring doc:
     operations-sorter: alpha
   api-docs:
     path: /v3/api-docs
+
+app:
+  jwt:
+    issuer: yoedu-demo
+    secret: xveViUZs13YjF2h5jzcJqkL619kstdRvgxcXSiH3pN6fsUQi5PDA0wB6ah8pDPlTP
+    access-token-ttl-minutes: 480
+    refresh-token-ttl-days: 7
