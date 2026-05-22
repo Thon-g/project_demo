@@ -1,4 +1,4 @@
-package yoot.project_demo.dto.Course;
+package yoot.project_demo.dto.course;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

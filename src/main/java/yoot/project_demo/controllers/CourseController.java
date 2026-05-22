@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import yoot.project_demo.Service.CourseService;
 import yoot.project_demo.common.ApiResponse;
 import yoot.project_demo.common.exception.NotFoundException;
-import yoot.project_demo.dto.Course.CourseResponse;
-import yoot.project_demo.dto.Course.CourseUpsertRequest;
+import yoot.project_demo.dto.course.CourseResponse;
+import yoot.project_demo.dto.course.CourseUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;

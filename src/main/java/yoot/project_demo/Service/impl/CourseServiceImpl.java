@@ -6,14 +6,10 @@ import org.springframework.stereotype.Service;
 import yoot.project_demo.Service.CourseService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Course;
-import yoot.project_demo.domain.entity.Student;
-import yoot.project_demo.dto.Course.CourseResponse;
-import yoot.project_demo.dto.Course.CourseUpsertRequest;
-import yoot.project_demo.dto.student.StudentResponse;
-import yoot.project_demo.dto.student.StudentUpsertRequest;
+import yoot.project_demo.dto.course.CourseResponse;
+import yoot.project_demo.dto.course.CourseUpsertRequest;
 import yoot.project_demo.repository.CourseRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +26,10 @@ public class CourseServiceImpl implements CourseService {
     public List<CourseResponse> findByAll() {
         return courseRepository.findAll().stream()
                 .map(this::map).toList();
+    }
+
+    public List<CourseResponse> findByCourseActive() {
+        return courseRepository.findByCourseActive();
     }
 
     public Optional<CourseResponse> findById(Long id) {
