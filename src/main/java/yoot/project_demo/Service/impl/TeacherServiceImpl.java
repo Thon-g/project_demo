@@ -6,11 +6,10 @@ import org.springframework.stereotype.Service;
 import yoot.project_demo.Service.TeacherService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Teacher;
-import yoot.project_demo.dto.Teacher.TeacherResponse;
-import yoot.project_demo.dto.Teacher.TeacherUpsertRequest;
+import yoot.project_demo.dto.teacher.TeacherResponse;
+import yoot.project_demo.dto.teacher.TeacherUpsertRequest;
 import yoot.project_demo.repository.TeacherRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

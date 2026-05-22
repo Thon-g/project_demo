@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import yoot.project_demo.Service.TeacherService;
 import yoot.project_demo.common.ApiResponse;
 import yoot.project_demo.common.exception.NotFoundException;
-import yoot.project_demo.domain.entity.Teacher;
-import yoot.project_demo.dto.Teacher.TeacherResponse;
-import yoot.project_demo.dto.Teacher.TeacherUpsertRequest;
-import yoot.project_demo.repository.TeacherRepository;
+import yoot.project_demo.dto.teacher.TeacherResponse;
+import yoot.project_demo.dto.teacher.TeacherUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;

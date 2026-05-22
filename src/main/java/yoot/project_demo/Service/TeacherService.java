@@ -2,9 +2,8 @@ package yoot.project_demo.Service;
 
 import org.springframework.stereotype.Service;
 import yoot.project_demo.common.exception.NotFoundException;
-import yoot.project_demo.domain.entity.Teacher;
-import yoot.project_demo.dto.Teacher.TeacherResponse;
-import yoot.project_demo.dto.Teacher.TeacherUpsertRequest;
+import yoot.project_demo.dto.teacher.TeacherResponse;
+import yoot.project_demo.dto.teacher.TeacherUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;
