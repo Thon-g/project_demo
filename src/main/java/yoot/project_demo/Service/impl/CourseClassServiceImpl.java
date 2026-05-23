@@ -1,6 +1,7 @@
 package yoot.project_demo.Service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Not;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import yoot.project_demo.Service.CourseClassService;
@@ -84,4 +85,11 @@ public class CourseClassServiceImpl implements CourseClassService {
         }
     }
 
+    public void delete(Long id) throws NotFoundException {
+        if(courseClassRepository.existsById(id)) {
+            courseClassRepository.deleteById(id);
+        } else {
+            throw new NotFoundException("Delete course class error");
+        }
+    }
 }

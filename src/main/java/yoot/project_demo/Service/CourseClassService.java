@@ -13,4 +13,5 @@ public interface CourseClassService {
     Optional<CourseClassResponse> findById(Long id);
     CourseClassResponse create(CourseClassUpsertRequest request);
     CourseClassResponse update(Long id, CourseClassUpsertRequest request);
+    void delete(Long id);
 }
