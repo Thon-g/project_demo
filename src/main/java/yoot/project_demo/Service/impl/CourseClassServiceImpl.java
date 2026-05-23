@@ -27,6 +27,31 @@ public class CourseClassServiceImpl implements CourseClassService {
         return mapper.map(cc, CourseClassResponse.class);
     }
 
+    CourseClass copyToCourseClass(CourseClassUpsertRequest req, CourseClass cc) {
+
+        if (req.getCourseId() != null) {
+            courseRepository.findById(req.getCourseId()).ifPresent(cc::setCourse);
+        }
+
+        if (req.getScheduleSlotId() != null) {
+            scheduleSlotRepository.findById(req.getScheduleSlotId()).ifPresent(cc::setScheduleSlot);
+        }
+
+        if (req.getRoomId() != null) {
+            roomRepository.findById(req.getRoomId()).ifPresent(cc::setRoom);
+        }
+
+        if (req.getMainTeacherId() != null) {
+            teacherRepository.findById(req.getMainTeacherId()).ifPresent(cc::setMainTeacher);
+        }
+
+        if (req.getAssistantTeacherId() != null) {
+            teacherRepository.findById(req.getAssistantTeacherId()).ifPresent(cc::setAssistantTeacher);
+        }
+
+        return cc;
+    }
+
     public List<CourseClassResponse> findAll() {
         return courseClassRepository.findAll().stream()
                 .map(this::toCourseClassResponse).toList();
@@ -39,24 +64,7 @@ public class CourseClassServiceImpl implements CourseClassService {
 
     public CourseClassResponse create(CourseClassUpsertRequest request) {
         CourseClass cc = mapper.map(request, CourseClass.class);
-        if(request.getCourseId() != null) {
-            courseRepository.findById(request.getCourseId()).ifPresent(cc::setCourse);
-        }
-
-        if(request.getScheduleSlotId() != null) {
-            scheduleSlotRepository.findById(request.getScheduleSlotId()).ifPresent(cc::setScheduleSlot);
-        }
-
-        if(request.getRoomId() != null) {
-            roomRepository.findById(request.getRoomId()).ifPresent(cc::setRoom);
-        }
-
-        if (request.getMainTeacherId() != null) {
-            teacherRepository.findById(request.getMainTeacherId()).ifPresent(cc::setMainTeacher);
-        }
-        if (request.getAssistantTeacherId() != null) {
-            teacherRepository.findById(request.getAssistantTeacherId()).ifPresent(cc::setAssistantTeacher);
-        }
+        copyToCourseClass(request, cc);
 
         CourseClass result = courseClassRepository.save(cc);
         return toCourseClassResponse(result);
@@ -74,10 +82,6 @@ public class CourseClassServiceImpl implements CourseClassService {
         } else {
             throw new NotFoundException("Course not exists");
         }
-    }
-
-    private void copyToCourseClass(CourseClassUpsertRequest request, CourseClass cc) {
-
     }
 
 }
