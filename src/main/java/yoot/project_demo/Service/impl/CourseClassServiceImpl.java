@@ -1,14 +1,13 @@
 package yoot.project_demo.Service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Not;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import yoot.project_demo.Service.CourseClassService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.CourseClass;
-import yoot.project_demo.dto.CourseClass.CourseClassResponse;
-import yoot.project_demo.dto.CourseClass.CourseClassUpsertRequest;
+import yoot.project_demo.dto.courseClass.CourseClassResponse;
+import yoot.project_demo.dto.courseClass.CourseClassUpsertRequest;
 import yoot.project_demo.repository.*;
 
 import java.util.List;

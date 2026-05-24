@@ -3,16 +3,13 @@ package yoot.project_demo.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import yoot.project_demo.Service.StudentService;
 import yoot.project_demo.common.exception.NotFoundException;
-import yoot.project_demo.domain.entity.Student;
 import yoot.project_demo.dto.student.StudentResponse;
 import yoot.project_demo.dto.student.StudentUpsertRequest;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor

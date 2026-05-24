@@ -1,13 +1,9 @@
 package yoot.project_demo.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import yoot.project_demo.Service.PromotionService;
 import yoot.project_demo.common.ApiResponse;
-import yoot.project_demo.common.exception.NotFoundException;
-import yoot.project_demo.dto.courseClass.CourseClassResponse;
-import yoot.project_demo.dto.courseClass.CourseClassUpsertRequest;
 import yoot.project_demo.dto.promotion.PromotionResponse;
 import yoot.project_demo.dto.promotion.PromotionUpsertRequest;
 

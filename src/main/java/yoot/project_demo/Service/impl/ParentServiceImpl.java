@@ -54,6 +54,5 @@ public class ParentServiceImpl implements ParentService {
         } else {
             throw new NotFoundException("Delete parent error");
         }
-
     }
 }

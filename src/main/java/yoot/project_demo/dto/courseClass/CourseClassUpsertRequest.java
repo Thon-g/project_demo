@@ -1,11 +1,7 @@
-package yoot.project_demo.dto.CourseClass;
+package yoot.project_demo.dto.courseClass;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import yoot.project_demo.domain.entity.Course;
-import yoot.project_demo.domain.entity.Room;
-import yoot.project_demo.domain.entity.ScheduleSlot;
-import yoot.project_demo.domain.entity.Teacher;
 import yoot.project_demo.domain.enums.ClassStatus;
 
 import java.time.LocalDate;

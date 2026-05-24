@@ -1,13 +1,9 @@
-package yoot.project_demo.dto.CourseClass;
+package yoot.project_demo.dto.courseClass;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import yoot.project_demo.domain.entity.Course;
-import yoot.project_demo.domain.entity.Room;
 import yoot.project_demo.domain.entity.ScheduleSlot;
-import yoot.project_demo.domain.entity.Teacher;
 import yoot.project_demo.domain.enums.ClassStatus;
 import yoot.project_demo.dto.course.CourseResponse;
 import yoot.project_demo.dto.room.RoomResponse;

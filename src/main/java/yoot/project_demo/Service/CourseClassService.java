@@ -1,8 +1,8 @@
 package yoot.project_demo.Service;
 
 import org.springframework.stereotype.Service;
-import yoot.project_demo.dto.CourseClass.CourseClassResponse;
-import yoot.project_demo.dto.CourseClass.CourseClassUpsertRequest;
+import yoot.project_demo.dto.courseClass.CourseClassResponse;
+import yoot.project_demo.dto.courseClass.CourseClassUpsertRequest;
 
 import java.util.List;
 import java.util.Optional;
