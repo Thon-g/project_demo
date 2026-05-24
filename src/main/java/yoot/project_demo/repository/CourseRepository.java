@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-    @Query("SELECT C FROM COURSE C WHERE C.isActive = 1")
+    @Query("SELECT C FROM Course C WHERE C.isActive = true")
     List<CourseResponse> findByCourseActive();
 }
