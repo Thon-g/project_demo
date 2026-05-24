@@ -3,6 +3,7 @@ package yoot.project_demo.Service.impl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import yoot.project_demo.Service.CourseClassService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.CourseClass;
@@ -91,4 +92,13 @@ public class CourseClassServiceImpl implements CourseClassService {
             throw new NotFoundException("Delete course class error");
         }
     }
+
+    @Transactional(readOnly = true)
+    public CourseClass getCourseClass(Long id) throws NotFoundException {
+        return courseClassRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Course class not found: " + id));
+    }
 }
+
+//Bài tập
+// thêm Sort theo tháng (month)
