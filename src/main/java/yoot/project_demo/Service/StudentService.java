@@ -2,6 +2,7 @@ package yoot.project_demo.Service;
 
 import org.springframework.stereotype.Service;
 import yoot.project_demo.common.exception.NotFoundException;
+import yoot.project_demo.domain.entity.Student;
 import yoot.project_demo.dto.student.StudentResponse;
 import yoot.project_demo.dto.student.StudentUpsertRequest;
 
@@ -15,4 +16,6 @@ public interface StudentService {
     StudentResponse create(StudentUpsertRequest request);
     StudentResponse update(Long id, StudentUpsertRequest request);
     void delete(Long id) throws NotFoundException;
+    Student getStudentForParent(Long studentId, Long parentId) throws NotFoundException;
+    Student getStudent(Long id) throws NotFoundException;
 }

@@ -3,6 +3,7 @@ package yoot.project_demo.Service.impl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import yoot.project_demo.Service.StudentService;
 import yoot.project_demo.common.exception.NotFoundException;
 import yoot.project_demo.domain.entity.Student;
@@ -59,6 +60,20 @@ public class StudentServiceImpl implements StudentService {
             throw new NotFoundException("Delete error");
         }
 
+    }
+
+    @Transactional(readOnly = true)
+    public Student getStudentForParent(Long studentId, Long parentId) throws NotFoundException {
+        Student student = getStudent(studentId);
+        if (student.getParent() == null || !student.getParent().getId().equals(parentId)) {
+            throw new org.springframework.security.access.AccessDeniedException("Student does not belong to current parent account");
+        }
+        return student;
+    }
+
+    public Student getStudent(Long id) throws NotFoundException {
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Student not found: " + id));
     }
 
 //    private StudentResponse map(Student student) {
