@@ -17,15 +17,18 @@ spring:
     init:
       mode: never
 
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    operations-sorter: alpha
+    tags-sorter: alpha
+
 server:
   port: 8080
-
-spring doc:
-  swagger-ui:
-    path: /swagger-ui.html
-    operations-sorter: alpha
-  api-docs:
-    path: /v3/api-docs
 
 app:
   jwt:
