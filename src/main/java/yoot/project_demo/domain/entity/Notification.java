@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @RequiredArgsConstructor
 @Entity
+@Table(name = "notifications")
 public class Notification extends AuditableEntity {
 
     @Enumerated(EnumType.STRING)
