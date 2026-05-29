@@ -1,8 +1,6 @@
 package yoot.project_demo.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import yoot.project_demo.domain.AuditableEntity;
@@ -15,18 +13,28 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "promotions")
 public class Promotion extends AuditableEntity {
-    @Column(name = "discount_type", nullable = false)
+    @Column(name = "promo_code", nullable = false, unique = true, length = 30)
+    private String promoCode;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "discount_type", nullable = false, length = 20)
     private DiscountType discountType;
+
     @Column(name = "discount_value", nullable = false)
     private double discountValue;
-    @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = true;
+
+    @Column(length = 255)
     private String note;
-    @Column(name = "promo_code", nullable = false)
-    private String promoCode;
 }

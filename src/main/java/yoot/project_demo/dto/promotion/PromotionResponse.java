@@ -1,6 +1,8 @@
 package yoot.project_demo.dto.promotion;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +16,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PromotionResponse {
     private Long id;
+    private String promoCode;
+    private String name;
     private DiscountType discountType;
     private double discountValue;
-    private LocalDate endDate;
     private LocalDate startDate;
-    private String name;
+    private LocalDate endDate;
+    private Boolean isActive = true;
     private String note;
-    private String promoCode;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

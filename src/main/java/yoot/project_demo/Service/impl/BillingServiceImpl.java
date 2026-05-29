@@ -23,6 +23,7 @@ import yoot.project_demo.repository.TuitionInvoiceRepository;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -104,4 +105,10 @@ public class BillingServiceImpl implements BillingService {
         }
         return result;
     }
+
+    public Optional<TuitionInvoiceResponse> findById(Long id) {
+        return tuitionInvoiceRepository.findById(id)
+                .map(this::toInvoiceResponse);
+    }
+
 }

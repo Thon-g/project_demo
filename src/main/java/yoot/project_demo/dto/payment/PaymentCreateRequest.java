@@ -1,6 +1,8 @@
 package yoot.project_demo.dto.payment;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,26 +16,30 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentResponse {
-    private Long id;
+public class PaymentCreateRequest {
 
     private Long cashierUserId;
 
+    @NotNull
     private Long invoiceId;
 
+    @NotNull
     private String invoiceCode;
 
+    @Size(min = 8, max = 30)
+    @NotNull
     private String paymentCode;
 
+    @NotNull
+    @DecimalMin("0.0")
     private BigDecimal paidAmount;
 
+    @NotNull
     private LocalDateTime paidAt;
 
+    @NotNull
     private PaymentMethod paymentMethod;
 
+    @Size(max = 255)
     private String note;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }

@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "payments")
 public class Payment extends AuditableEntity {
 
-    @Column(nullable = true)
     @ManyToOne
     @JoinColumn(name = "cashier_user_id")
     private User cashierUserId;

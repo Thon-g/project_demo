@@ -11,11 +11,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PromotionUpsertRequest {
+    private String promoCode;
+    private String name;
     private DiscountType discountType;
     private double discountValue;
-    private LocalDate endDate;
     private LocalDate startDate;
-    private String name;
+    private LocalDate endDate;
+    private Boolean isActive = true;
     private String note;
-    private String promoCode;
 }
