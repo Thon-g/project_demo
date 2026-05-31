@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 @Table(name = "payments")
 public class Payment extends AuditableEntity {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cashier_user_id")
-    private User cashierUserId;
+    private User cashierUser;
 
-    @ManyToOne
-    @JoinColumn(name = "invoice_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "invoice_id", nullable = false)
     private TuitionInvoice invoice;
 
-    @Column(name = "payment_code", length = 30, nullable = false)
+    @Column(name = "payment_code", unique = true, length = 30, nullable = false)
     private String paymentCode;
 
     @Column(name = "paid_amount", precision = 12, scale = 2, nullable = false)
