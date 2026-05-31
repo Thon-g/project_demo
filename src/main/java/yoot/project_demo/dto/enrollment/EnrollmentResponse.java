@@ -17,18 +17,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EnrollmentResponse {
     private Long id;
-
-    private Student student;
-
-    private CourseClass courseClass;
-
+    private Long studentId;
+    private String studentName;
+    private Long courseClassId;
+    private String className;
     private LocalDate enrolledAt;
-
-    private EnrollmentStatus status = EnrollmentStatus.ACTIVE;
-
+    private String status;
     private String note;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 }
