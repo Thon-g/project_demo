@@ -18,20 +18,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PaymentCreateRequest {
 
-    private Long cashierUserId;
+//    private Long cashierUserId;
 
     @NotNull
     private Long invoiceId;
 
-    @NotNull
-    private String invoiceCode;
+//    @NotNull
+//    private String invoiceCode;
 
     @Size(min = 8, max = 30)
     @NotNull
     private String paymentCode;
 
     @NotNull
-    @DecimalMin("0.0")
+    @DecimalMin("0.01")
     private BigDecimal paidAmount;
 
     @NotNull

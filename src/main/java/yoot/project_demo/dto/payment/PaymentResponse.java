@@ -1,12 +1,9 @@
 package yoot.project_demo.dto.payment;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import yoot.project_demo.domain.entity.TuitionInvoice;
-import yoot.project_demo.domain.entity.User;
-import yoot.project_demo.domain.enums.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,24 +13,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PaymentResponse {
     private Long id;
-
-    private Long cashierUserId;
-
     private Long invoiceId;
-
     private String invoiceCode;
-
     private String paymentCode;
-
     private BigDecimal paidAmount;
-
+    private String paymentMethod;
     private LocalDateTime paidAt;
-
-    private PaymentMethod paymentMethod;
-
+    private Long cashierUserId;
+    private String cashierUsername;
     private String note;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 }
