@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import yoot.project_demo.domain.AuditableEntity;
 import yoot.project_demo.domain.enums.DiscountType;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
@@ -24,7 +25,7 @@ public class Promotion extends AuditableEntity {
     private DiscountType discountType;
 
     @Column(name = "discount_value", nullable = false)
-    private double discountValue;
+    private BigDecimal discountValue;
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;

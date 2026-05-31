@@ -86,7 +86,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     private BigDecimal calculateDiscount(BigDecimal originalAmount, Promotion promotion) {
-        BigDecimal discountValue = BigDecimal.valueOf(promotion.getDiscountValue());
+        BigDecimal discountValue = promotion.getDiscountValue();
 
         if (promotion.getDiscountType() == DiscountType.PERCENT) {
             return originalAmount.multiply(discountValue)

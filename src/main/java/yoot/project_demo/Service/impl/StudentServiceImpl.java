@@ -76,6 +76,11 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new NotFoundException("Student not found: " + id));
     }
 
+    @Transactional(readOnly = true)
+    public List<StudentResponse> findByParentId(Long parentId) {
+        return studentRepository.findByParentId(parentId).stream().map(this::map).toList();
+    }
+
 //    private StudentResponse map(Student student) {
 //        StudentResponse result = new StudentResponse();
 //        ParentResponse pResult = new ParentResponse();
